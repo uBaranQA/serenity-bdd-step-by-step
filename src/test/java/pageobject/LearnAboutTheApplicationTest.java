@@ -1,6 +1,8 @@
 package pageobject;
 
+import net.thucydides.core.annotations.ManagedPages;
 import org.junit.Test;
+import pageobject.pages.HomePage;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -8,6 +10,9 @@ import static org.hamcrest.Matchers.equalToIgnoringCase;
 
 
 public class LearnAboutTheApplicationTest extends BaseTest {
+
+    @ManagedPages
+    HomePage homePage;
 
     @Test
     public void should_be_able_to_identify_the_aplication() {

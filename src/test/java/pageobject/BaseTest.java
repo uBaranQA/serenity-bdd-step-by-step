@@ -35,7 +35,7 @@ public abstract class BaseTest {
 
     @Before
     public void setUp() throws Exception {
-        homePage = new HomePage(getDriver(), getConfig().getBaseUrl());
+//        homePage = new HomePage(getDriver(), getConfig().getBaseUrl());
     }
 
     @AfterClass
