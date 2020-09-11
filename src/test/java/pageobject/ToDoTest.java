@@ -16,9 +16,7 @@ public class ToDoTest extends BaseTest {
         HomePage homePage = new HomePage(getDriver(), getConfig().getBaseUrl());
         homePage.addNewTodo(NEW_TASK);
 
-        Optional addedToDo = homePage.getAllToDos().stream()
-                .filter(element -> element.getText().equals(NEW_TASK))
-                .findFirst();
+        Optional addedToDo = checkIfTodoIsVisibleOnTheList(homePage.getAllToDos(), NEW_TASK);
 
         Assert.assertTrue(addedToDo.isPresent());
     }

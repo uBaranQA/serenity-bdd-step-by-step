@@ -1,5 +1,6 @@
 package pageobject.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,6 +9,9 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 public class HomePage extends BasePage {
+
+    private static final String COMPLETE_TICKBOX = ".//input[@class='toggle']";
+    private static final String ITEM_ROW = "//div[@class='view' and contains(.,'%s')]";
 
     @FindBy(css = "h1")
     private WebElement heading;
@@ -30,6 +34,10 @@ public class HomePage extends BasePage {
         newToDoInput.sendKeys(Keys.RETURN);
     }
 
+    public void completeTodo(String toDoName) {
+        itemRow(toDoName).findElement(By.xpath(COMPLETE_TICKBOX)).click();
+    }
+
     public List <WebElement> getAllToDos() {
         return toDosList;
     }
@@ -45,4 +53,9 @@ public class HomePage extends BasePage {
     public String getPlaceholder() {
         return newToDoInput.getAttribute("placeholder");
     }
+
+    private WebElement itemRow(String todoName) {
+        return driver.findElement(By.xpath(String.format(ITEM_ROW, todoName)));
+    }
+
 }
